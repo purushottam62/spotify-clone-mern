@@ -1,0 +1,129 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+body{
+    background-color: antiquewhite;
+}
+
+*{
+    margin :0;
+    padding :0;
+}
+nav{
+font-family:'Ubuntu'
+}
+nav ul{
+    display :flex;
+    align-items: center;
+    list-style-type :none;
+    height :89 px;
+    background-color: black;
+    color :white; 
+ 
+}
+nav ul li{
+      padding : 0 12px;
+}
+.brand img{
+width :44px;
+padding: 0 8px;
+
+}
+.brand{
+    display: flex;
+    align-items: center;
+    font-weight: bolder;
+    font: 1.3rem;
+}
+.container{
+    min-height: 70vh;  
+    background-color: black;
+    color: white;
+      display: flex;
+      /* flex-direction: column; */
+      margin: 23px auto;
+      width: 70%;
+      border-radius: 12px;
+      padding: 34px;
+      background-image: url(girllisteningimage.webp);
+      background-size: cover;
+}
+.bottom{
+position: sticky;
+bottom: 0;
+height:100px;
+/* width:15in; */
+/* my mistake was that i took width 15 in */
+background-color: black;
+/* bottom: 0; */
+display:flex;
+justify-content: center;
+align-items: center ;
+flex-direction:column;
+color: white;
+/* margin: 12px 0; */
+/* margin: 0;
+padding: 0; */
+}
+
+#myProgressBar{
+width: 80vw;
+cursor: pointer;
+/* text-align: center; */
+/* margin: 0;
+padding: 0; */
+/* position: static; */
+/* align-content: right; */
+
+}
+.icons{
+   margin-top: 14px;
+   color: white;
+   
+
+}
+.icons i{
+    cursor: pointer;
+}
+#backward{
+    padding:0 8px;
+   
+}
+#play{
+    padding: 0 8px;
+}
+#forward{
+    padding:0  8px;
+}
+.songItem{
+height: 50px;
+display: flex;
+background-color: black;
+/* width: 80%; */
+margin: 12px 0;
+justify-content: space-between;
+align-items: center;
+border-radius: 34px;
+}
+.songItem img{
+width: 23px;
+margin:0 23px;
+border-radius: 34px;
+}
+.timeStamp{
+    margin: 0 23px;
+    /* cursor: pointer; */
+}
+.songlistplay i{
+    cursor: pointer;
+}
+.songInfo img{
+   width: 60px;
+    height: 20px;
+    opacity: 0;
+    transition: opacity is ease-in;
+}
+.songInfo {
+    position: absolute;
+    left: 0;
+}

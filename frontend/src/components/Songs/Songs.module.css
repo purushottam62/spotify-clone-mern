@@ -1,0 +1,36 @@
+.songItem {
+  height: 50px;
+  display: flex;
+  background-color: black;
+  /* width: 80%; */
+  margin: 12px 0;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 34px;
+  color: aliceblue;
+}
+.songItem img {
+  width: 23px;
+  margin: 0 23px;
+  border-radius: 34px;
+}
+.timeStamp {
+  margin: 0 23px;
+  /* cursor: pointer; */
+}
+.songlistplay i {
+  cursor: pointer;
+}
+.songInfo img {
+  width: 60px;
+  height: 20px;
+  opacity: 0;
+  transition: opacity is ease-in;
+}
+.songInfo {
+  position: absolute;
+  left: 0;
+}
+.container {
+  min-height: 100vh;
+}

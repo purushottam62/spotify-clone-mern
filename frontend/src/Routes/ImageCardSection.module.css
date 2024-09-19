@@ -1,0 +1,55 @@
+.section {
+  padding: 20px;
+  background-color: #121212;
+  color: #fff;
+}
+
+h2 {
+  margin-bottom: 20px;
+}
+
+.cardContainer {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto; /* Enable horizontal scrolling */
+  padding-bottom: 20px; /* Add some padding at the bottom to make sure the scrollbar doesn't overlap the content */
+}
+
+.imageCard {
+  background-color: #181818;
+  border-radius: 8px;
+  overflow: hidden;
+  width: 150px; /* Reduced width */
+  flex: 0 0 auto; /* Prevent shrinking and growing, maintain fixed size */
+  transition: transform 0.2s;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Add shadow effect */
+}
+
+.imageCard:hover {
+  transform: scale(1.05);
+}
+
+.image {
+  width: 100%;
+  height: auto; /* Auto height to maintain aspect ratio */
+  border-radius: 8px 8px 0 0; /* Rounded top corners to match the card */
+  margin-bottom: 10px; /* Space between the image and the text */
+  display: block; /* Ensure images are block elements */
+}
+
+.imageCard p {
+  padding: 10px 0;
+  font-size: 14px; /* Reduced font size */
+  color: #b3b3b3;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .cardContainer {
+    gap: 10px; /* Reduce gap for smaller screens */
+  }
+  .imageCard {
+    width: calc(50% - 10px); /* Two cards per row on smaller screens */
+  }
+}
