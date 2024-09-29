@@ -74,8 +74,11 @@ const Footer = () => {
         playAudio();
       }
     } else {
-      audioElement.current.src = currentSong.filePath;
+      audioElement.current.src = currentSong?.filePath;
       audioElement.current.pause();
+      dispatch({
+        type: "PAUSE_MUSIC",
+      });
     }
     return () => {
       if (audioElement.current) {
@@ -109,7 +112,7 @@ const Footer = () => {
     const pauseMusicAction = {
       type: "PAUSE_MUSIC",
       payload: {
-        actionpausedTime: audioElement.current.currentTime,
+        actionpausedTime: audioElement?.current?.currentTime,
       },
     };
 

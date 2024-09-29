@@ -1,0 +1,102 @@
+.login-container {
+  background-image: url("https://your-background-image-url.com"); /* Set your desired background image URL */
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+}
+
+.music-image {
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+.footer {
+  padding: 10px 20px;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.loginContainer {
+  background-color: #f0f8ff; /* Light background color */
+}
+
+.vh100 {
+  height: 100vh; /* Full viewport height */
+}
+
+.bgGradient {
+  background: linear-gradient(
+    to right,
+    #ff7e5f,
+    #feb47b
+  ); /* Vibrant gradient */
+}
+
+.musicImage {
+  border-radius: 10px; /* Rounded corners for image */
+}
+
+.socialButton {
+  background-color: #007bff; /* Blue for social buttons */
+  transition: background-color 0.3s ease;
+}
+
+.socialButton:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+.footer {
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  padding: 10px 20px;
+  background-color: #343a40; /* Dark footer */
+}
+.loginContainer {
+  background-color: #f0f8ff; /* Keep a light background for contrast */
+}
+
+.vh100 {
+  height: 100vh; /* Full viewport height */
+}
+
+.bgGradient {
+  background: linear-gradient(
+    to right,
+    #ff6f61,
+    #de5b94
+  ); /* Gradient matching nav */
+}
+
+.musicImage {
+  border-radius: 10px; /* Rounded corners for image */
+}
+
+.socialButton {
+  background-color: #4caf50; /* Green for social buttons */
+  transition: background-color 0.3s ease;
+}
+
+.socialButton:hover {
+  background-color: #45a049; /* Darker green on hover */
+}
+
+.loginButton {
+  background-color: #4caf50; /* Match with social buttons */
+  color: white;
+}
+
+.loginButton:hover {
+  background-color: #45a049; /* Darker on hover */
+}
+
+.footer {
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  padding: 10px 20px;
+  background-color: #343a40; /* Keep dark footer for contrast */
+}

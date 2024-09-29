@@ -1,47 +1,77 @@
 .section {
   padding: 20px;
-  background-color: #121212;
+  background: linear-gradient(
+    135deg,
+    #1e1e1e,
+    #282828
+  ); /* Darker gradient for depth */
   color: #fff;
+  border-radius: 10px; /* Slightly more rounded corners */
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6); /* Deeper shadow for a more pronounced effect */
+  position: relative; /* For pseudo-elements */
+  overflow: hidden; /* Hide overflow for pseudo-elements */
+}
+
+/* Decorative Background Elements */
+.section::before {
+  content: "";
+  position: absolute;
+  top: 10%;
+  left: 0;
+  right: 0;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.05); /* Subtle white overlay for texture */
+  pointer-events: none; /* Prevent interaction */
+  border-radius: 10px; /* Match the section's border radius */
 }
 
 h2 {
   margin-bottom: 20px;
+  font-family: "Helvetica Neue", Arial, sans-serif; /* Modern font for the heading */
+  font-size: 24px; /* Slightly larger font size */
+  text-align: center; /* Center the title */
 }
 
 .cardContainer {
   display: flex;
   gap: 20px;
   overflow-x: auto; /* Enable horizontal scrolling */
-  padding-bottom: 20px; /* Add some padding at the bottom to make sure the scrollbar doesn't overlap the content */
+  padding-bottom: 20px; /* Add padding at the bottom */
 }
 
 .imageCard {
-  background-color: #181818;
-  border-radius: 8px;
+  background-color: rgba(
+    40,
+    40,
+    40,
+    0.9
+  ); /* Darker, more opaque background for cards */
+  border-radius: 10px; /* More rounded corners */
   overflow: hidden;
-  width: 150px; /* Reduced width */
-  flex: 0 0 auto; /* Prevent shrinking and growing, maintain fixed size */
-  transition: transform 0.2s;
+  width: 150px; /* Fixed width */
+  flex: 0 0 auto; /* Maintain fixed size */
+  transition: transform 0.2s, box-shadow 0.2s; /* Smooth transition for hover effects */
   text-align: center;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Add shadow effect */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4); /* Increased shadow effect */
 }
 
 .imageCard:hover {
   transform: scale(1.05);
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.5); /* Deepen shadow on hover */
 }
 
 .image {
   width: 100%;
-  height: auto; /* Auto height to maintain aspect ratio */
-  border-radius: 8px 8px 0 0; /* Rounded top corners to match the card */
-  margin-bottom: 10px; /* Space between the image and the text */
-  display: block; /* Ensure images are block elements */
+  height: auto; /* Maintain aspect ratio */
+  border-radius: 10px 10px 0 0; /* Match card's border radius */
+  margin-bottom: 10px; /* Space between image and text */
+  display: block; /* Block elements for images */
 }
 
 .imageCard p {
   padding: 10px 0;
-  font-size: 14px; /* Reduced font size */
-  color: #b3b3b3;
+  font-size: 16px; /* Slightly larger font size for better readability */
+  color: #e0e0e0; /* Light gray color for text */
 }
 
 /* Responsive Design */

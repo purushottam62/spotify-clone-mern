@@ -9,12 +9,12 @@ const userSchema = new Schema(
       required: true,
       trim: true,
       unique: true,
+      index: true,
     },
     fullName: {
       type: String,
       required: true,
       trim: true,
-      index: true,
     },
     email: {
       type: String,
@@ -32,7 +32,7 @@ const userSchema = new Schema(
       type: [
         {
           type: Schema.Types.ObjectId,
-          ref: "Video",
+          ref: "Song",
         },
       ],
     },

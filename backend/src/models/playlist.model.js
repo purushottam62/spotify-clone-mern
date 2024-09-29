@@ -13,8 +13,10 @@ const playlistSchema = new Schema(
 
     songs: [
       {
-        type: Schema.Types.ObjectId,
-        ref: "song",
+        songNameOfSongs: { type: String, required: true },
+        filePath: { type: String, required: true },
+        coverPath: { type: String, required: true },
+        duration: { type: String, required: true },
       },
     ],
 

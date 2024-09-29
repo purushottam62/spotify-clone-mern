@@ -1,7 +1,7 @@
 import React from "react";
 import { useContext, useState } from "react";
 import Footer from "./components/Footer/Footer";
-import Navigation from "./components/Navigation";
+import Navigation from "./components/navigation/Navigation";
 import SongsProvider, { songscontext } from "./store/Songs-store";
 import Songs from "./components/Songs/Songs";
 

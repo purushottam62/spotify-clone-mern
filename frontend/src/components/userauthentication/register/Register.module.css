@@ -1,0 +1,217 @@
+/* Register.module.css */
+
+.container {
+  background-color: #2779e2;
+  height: 100vh;
+}
+
+.card {
+  border-radius: 15px;
+  padding: 20px;
+}
+
+.form-control-lg {
+  margin-bottom: 20px;
+}
+
+.header {
+  font-size: 1.2rem;
+}
+
+.upload-text {
+  font-size: 0.9rem;
+  color: #6c757d;
+}
+
+.button-container {
+  padding: 20px;
+}
+
+.loading-message {
+  text-align: center;
+  padding: 40px;
+}
+
+.button {
+  background-color: #007bff;
+  color: white;
+  width: 100%;
+}
+/* Register.module.css */
+
+.vh100 {
+  height: 100vh;
+}
+
+.bgPrimary {
+  background-color: #2779e2; /* Vibrant blue color */
+}
+
+.card {
+  border-radius: 15px;
+  background-color: white; /* White background for the card */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Soft shadow */
+  padding: 30px; /* Add padding inside the card */
+}
+
+/* Input Group Styles */
+.inputGroup {
+  margin-bottom: 20px; /* Space between input fields */
+}
+
+.inputField {
+  width: 100%;
+  padding: 12px; /* Padding for the input field */
+  border: 2px solid #2779e2; /* Border color matching the theme */
+  border-radius: 8px; /* Rounded corners */
+  background-color: #f0f8ff; /* Light background color for inputs */
+  transition: border-color 0.3s; /* Smooth border color transition */
+}
+
+.inputField:focus {
+  border-color: #004080; /* Darker shade on focus */
+  outline: none; /* Remove outline */
+}
+
+.small.text-muted {
+  color: #6c757d; /* Muted color for the small text */
+}
+/* Register.module.css */
+
+.vh100 {
+  height: 100vh;
+}
+
+.bgPrimary {
+  background-color: #ff8c00; /* Vibrant orange color */
+}
+
+.card {
+  border-radius: 15px;
+  background-color: white; /* White background for the card */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Soft shadow */
+  padding: 30px; /* Add padding inside the card */
+}
+
+/* Input Group Styles */
+.inputGroup {
+  margin-bottom: 20px; /* Space between input fields */
+}
+
+.inputField {
+  width: 100%;
+  padding: 12px; /* Padding for the input field */
+  border: 2px solid #ff8c00; /* Border color matching the theme */
+  border-radius: 8px; /* Rounded corners */
+  background-color: #fff5e1; /* Light background color for inputs */
+  transition: border-color 0.3s; /* Smooth border color transition */
+}
+
+.inputField:focus {
+  border-color: #cc7000; /* Darker shade on focus */
+  outline: none; /* Remove outline */
+}
+
+.small.text-muted {
+  color: #6c757d; /* Muted color for the small text */
+}
+/* Register.module.css */
+
+.vh100 {
+  height: 100vh;
+}
+
+.bgPrimary {
+  background: linear-gradient(
+    135deg,
+    #ff7f50,
+    #ff4500
+  ); /* Gradient from coral to orange red */
+}
+
+.card {
+  border-radius: 15px;
+  background-color: white; /* White background for the card */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Soft shadow */
+  padding: 30px; /* Add padding inside the card */
+}
+
+/* Input Group Styles */
+.inputGroup {
+  margin-bottom: 20px; /* Space between input fields */
+}
+
+.inputField {
+  width: 100%;
+  padding: 12px; /* Padding for the input field */
+  border: 2px solid #ff7f50; /* Border color matching the theme */
+  border-radius: 8px; /* Rounded corners */
+  background-color: #fff5e1; /* Light background color for inputs */
+  transition: border-color 0.3s; /* Smooth border color transition */
+}
+
+.inputField:focus {
+  border-color: #cc7000; /* Darker shade on focus */
+  outline: none; /* Remove outline */
+}
+
+.small.text-muted {
+  color: #6c757d; /* Muted color for the small text */
+}
+/* Register.module.css */
+
+.vh100 {
+  height: 100vh;
+}
+
+.bgPrimary {
+  background: linear-gradient(
+    135deg,
+    #ff7f50,
+    #ff4500
+  ); /* Gradient for the main background */
+}
+
+.headerSection {
+  background-color: #ffcc80; /* Light orange for header */
+  padding: 20px;
+  border-radius: 15px 15px 0 0; /* Rounded top corners */
+}
+
+.card {
+  border-radius: 15px;
+  background-color: white; /* White background for the card */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Soft shadow */
+  padding: 30px; /* Add padding inside the card */
+}
+
+/* Input Group Styles */
+.inputGroup {
+  margin-bottom: 20px; /* Space between input fields */
+}
+
+.inputField {
+  width: 100%;
+  padding: 12px; /* Padding for the input field */
+  border: 2px solid #ff7f50; /* Border color matching the theme */
+  border-radius: 8px; /* Rounded corners */
+  background-color: #fff5e1; /* Light background color for inputs */
+  transition: border-color 0.3s; /* Smooth border color transition */
+}
+
+.inputField:focus {
+  border-color: #cc7000; /* Darker shade on focus */
+  outline: none; /* Remove outline */
+}
+
+.small.text-muted {
+  color: #6c757d; /* Muted color for the small text */
+}
+
+.footerSection {
+  background-color: #ffab40; /* Different shade for the footer */
+  padding: 15px;
+  border-radius: 0 0 15px 15px; /* Rounded bottom corners */
+  text-align: center;
+  color: white;
+}

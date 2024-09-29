@@ -4,6 +4,8 @@ import {
   registerUser,
   logOutUser,
   refreshAccessToken,
+  getHistory,
+  setHistory,
 } from "../controllers/registerUser.controller.js";
 import { upload } from "../middilewares/multer.middileware.js";
 
@@ -26,4 +28,7 @@ router.route("/register").post(
 router.route("/login").post(loginUser);
 router.route("/logout").post(verifyJWT, logOutUser);
 router.route("/refreshToken").post(refreshAccessToken);
+router.route("/getHistory").get(verifyJWT, getHistory);
+router.route("/setHistory").post(verifyJWT, setHistory);
+
 export default router;

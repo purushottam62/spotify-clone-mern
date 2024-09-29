@@ -6,6 +6,7 @@ import { ApiResponse } from "../utils/ApiResponse.js";
 import asyncHandler from "../utils/asyncHandler.js";
 import { uploadOnCloudinary } from "../utils/cloudinary.js";
 import Jwt from "jsonwebtoken";
+import { History } from "../models/history.model.js";
 const generateAcessTokenAndRefreshToken = async (userid) => {
   try {
     const user = await User.findById(userid);
@@ -156,6 +157,7 @@ const logOutUser = asyncHandler(async (req, res) => {
     httpOnly: true,
     secure: true,
   };
+
   return res
     .status(200)
     .clearCookie("accessToken", options)
@@ -201,7 +203,7 @@ const refreshAccessToken = asyncHandler(async (req, res) => {
     throw new ApiError(401, error?.message || "invalid refresh token");
   }
 });
-const changeCurrentPassword = asyncHandler(async (res, req) => {
+const changeCurrentPassword = asyncHandler(async (req, res) => {
   const { oldPassword, newPassword } = req.body;
   const user = User.findById(req.user._id);
   if (!user) throw new ApiError(401, "invalid user");
@@ -213,7 +215,7 @@ const changeCurrentPassword = asyncHandler(async (res, req) => {
     .status(200)
     .json(new ApiResponse(200, {}, "password changed successfully"));
 });
-const getCurrentUser = asyncHandler(async (res, req) => {
+const getCurrentUser = asyncHandler(async (req, res) => {
   return res
     .status(200)
     .json(new ApiResponse(200, req.user, "current user fetched successfully"));
@@ -240,7 +242,58 @@ const changeProfilePic = asyncHandler(async () => {
     .status(200)
     .json(new ApiResponse(200, user, "cover image updated successfully"));
 });
-const getWatchHistory = asyncHandler(async (res, req) => {});
+
+const getHistory = asyncHandler(async (req, res) => {
+  console.log("req.user received in getHistory is", req.user);
+  const user = req.user;
+  console.log("user received in getHistory is", user);
+
+  // Try to find the history for the user
+  let history = await History.findOne({ owner: user.id });
+
+  // If no history is found, create a new one and save it
+  if (!history) {
+    history = await History.create({
+      owner: user.id,
+      songs: [],
+    });
+  }
+
+  return res
+    .status(200)
+    .json(new ApiResponse(200, history, "History fetched successfully"));
+});
+
+const setHistory = asyncHandler(async (req, res) => {
+  console.log("Request received for setting history");
+
+  const user = req.user;
+  const history = req.body;
+
+  // Check if the history is valid and contains an array of songs
+  if (!Array.isArray(history)) {
+    throw new ApiError("Invalid history format. Expected an array.");
+  }
+
+  console.log("History received from frontend:", history);
+
+  try {
+    // Update or create history document for the user
+    await History.findOneAndUpdate(
+      { owner: user.id }, // Find the history by the user ID
+      { songs: history }, // Replace the songs array with the new data
+      { new: true, upsert: true } // Return the updated doc and create if it doesn't exist
+    );
+
+    return res
+      .status(200)
+      .json(new ApiResponse(200, {}, "History updated successfully"));
+  } catch (error) {
+    console.log("Error while updating history in the database:", error);
+    throw new ApiError("Failed to update history.");
+  }
+});
+
 export {
   registerUser,
   loginUser,
@@ -249,5 +302,6 @@ export {
   changeCurrentPassword,
   getCurrentUser,
   changeProfilePic,
-  getWatchHistory,
+  getHistory,
+  setHistory,
 };

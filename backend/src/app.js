@@ -10,7 +10,7 @@ app.use(
       "http://localhost:5173",
       "http://localhost:8000",
     ],
-    methods: "GET,POST,PUT,DELETE",
+    methods: "GET,POST,PUT,DELETE,PATCH",
     credentials: true,
   }) //it is middileware that allows  to enable cross-origin resource sharing which is necessary when your front-end and back-end are on different domains.
 );
@@ -28,6 +28,10 @@ app.use(
 
 app.use(express.static("public"));
 app.use(cookieParser());
+
 import userRouter from "./routes/user.route.js";
+import playlistRouter from "./routes/playlist.route.js";
+
 app.use("/api/v1/user", userRouter);
+app.use("/api/v1/playlist", playlistRouter);
 export { app };

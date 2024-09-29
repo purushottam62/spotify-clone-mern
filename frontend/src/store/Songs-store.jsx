@@ -1,290 +1,167 @@
 import React, { useState, createContext, useReducer, useRef } from "react";
-let allSongs = [
-  {
-    songNameOfSongs: "hawayein",
-    filePath: "songs/hawayein.mp3",
-    coverPath: "images/hawayein.jpg",
-    duration: "04:50",
-  },
-  {
-    songNameOfSongs: "baarish ban jana",
-    filePath: "songs/baarish ban jaana.mp3",
-    coverPath: "images/baarish ban jana.jpg",
-    duration: "03:20",
-  },
-  {
-    songNameOfSongs: "paanchi bole",
-    filePath: "songs/paanchi bole.mp3",
-    coverPath: "images/paanchi bole.jpg",
-    duration: "04:19",
-  },
-  {
-    songNameOfSongs: "deewane ham nhi hote",
-    filePath: "songs/deewane hum nhi hote.mp3",
-    coverPath: "images/deewane ham nhi hote.jpg",
-    duration: "03:44",
-  },
-  {
-    songNameOfSongs: "hari sakhi mangal gao ri",
-    filePath: "songs/hari sakhi mangal gao ri.mp3",
-    coverPath: "images/hari sakhi magal gao ri.jpg",
-    duration: "05:42",
-  },
-  {
-    songNameOfSongs: "khairyat",
-    filePath: "songs/khairyiat.mp3",
-    coverPath: "images/khairyat.jpg",
-    duration: "04:40",
-  },
-  {
-    songNameOfSongs: "paisa hai toh",
-    filePath: "songs/paisa hai toh.mp3",
-    coverPath: "images/paisa hai toh.jpg",
-    duration: "03:08",
-  },
-];
-let oldSongs = [
-  {
-    songNameOfSongs: " aakhir tumhe aana hai",
-    filePath: "old_songs/aakhir tumhe aana hai.mp3",
-    coverPath: "old_songs_images/aakhir tumhe aana hai.jpeg",
-    duration: "04:59",
-  },
-  {
-    songNameOfSongs: " aankhein khuli",
-    filePath: "old_songs/aankhein khuli.mp3",
-    coverPath: "old_songs_images/mohabattein.jpeg",
-    duration: "07:02",
-  },
-  {
-    songNameOfSongs: " are are are",
-    filePath: "old_songs/are are are.mp3",
-    coverPath: "old_songs_images/are are.jpeg",
-    duration: "05:35",
-  },
-  {
-    songNameOfSongs: " bholi si surat",
-    filePath: "old_songs/bholi si surat.mp3",
-    coverPath: "old_songs_images/are are.jpeg",
-    duration: "04:15",
-  },
-  {
-    songNameOfSongs: " bole chudiyan",
-    filePath: "old_songs/bole chudiyan.mp3",
-    coverPath: "old_songs_images/kabhi khushi kabhi gham.jpeg",
-    duration: "06:48",
-  },
-  {
-    songNameOfSongs: " chalte chalte",
-    filePath: "old_songs/chalte chalte.mp3",
-    coverPath: "old_songs_images/mohabattein.jpeg",
-    duration: "07:38",
-  },
-  {
-    songNameOfSongs: " dil to pagal hai",
-    filePath: "old_songs/dil to pagal hai.mp3",
-    coverPath: "old_songs_images/are are.jpeg",
-    duration: "05:36",
-  },
-  {
-    songNameOfSongs: " ek duje ke vaste",
-    filePath: "old_songs/ek duje ke vaste.mp3",
-    coverPath: "old_songs_images/are are.jpeg",
-    duration: "03:26",
-  },
-  {
-    songNameOfSongs: " humko humise chura lo",
-    filePath: "old_songs/humko humsie chura lo.mp3",
-    coverPath: "old_songs_images/mohabattein.jpeg",
-    duration: "07:58",
-  },
-  {
-    songNameOfSongs: " kabhi khushi kabhi gham",
-    filePath: "old_songs/kabhi khushi kabhi gham.mp3",
-    coverPath: "old_songs_images/kabhi khushi kabhi gham.jpeg",
-    duration: "07:52",
-  },
-  {
-    songNameOfSongs: " le gyi ",
-    filePath: "old_songs/le gayi.mp3",
-    coverPath: "old_songs_images/are are.jpeg",
-    duration: "05:41",
-  },
-  {
-    songNameOfSongs: " neele neel ambar par ",
-    filePath: "old_songs/neele neele ambar par.mp3",
-    coverPath: "old_songs_images/neele neele ambar par.jpeg",
-    duration: "05:20",
-  },
-  {
-    songNameOfSongs: " soni soni",
-    filePath: "old_songs/soni soni.mp3",
-    coverPath: "old_songs_images/mohabattein.jpeg",
-    duration: "07:54",
-  },
-  {
-    songNameOfSongs: " suraj hua maddham",
-    filePath: "old_songs/suraj hua maddham.mp3",
-    coverPath: "old_songs_images/kabhi khushi kabhi gham.jpeg",
-    duration: "07:07",
-  },
-  {
-    songNameOfSongs: " yeh ladka hai allah",
-    filePath: "old_songs/yeh ladka hai allah.mp3",
-    coverPath: "old_songs_images/kabhi khushi kabhi gham.jpeg",
-    duration: "05:27",
-  },
-  {
-    songNameOfSongs: " zinda rehti hai mohabattein",
-    filePath: "old_songs/zinda rehti hai mohabbatein.mp3",
-    coverPath: "old_songs_images/mohabattein.jpeg",
-    duration: "02:23",
-  },
-];
-let romanticSongs = [
-  {
-    songNameOfSongs: "Apna Bana Le",
-    filePath: "romantic songs/apna bana le.mp3",
-    coverPath: "romantic song images/apna bana le.jpeg",
-    duration: "04:00",
-  },
-  {
-    songNameOfSongs: "Bolna Mahi Bolna",
-    filePath: "romantic songs/bolna mahi.mp3",
-    coverPath: "romantic song images/bolna mahi.jpeg",
-    duration: "03:30",
-  },
-  {
-    songNameOfSongs: "Dekha Tenu Pehli Baar",
-    filePath: "romantic songs/dekha tenu pehli baar.mp3",
-    coverPath: "romantic song images/dekha tenu.jpeg",
-    duration: "04:50",
-  },
-  {
-    songNameOfSongs: "Dil Meri Na Sune",
-    filePath: "romantic songs/dil meri na sune.mp3",
-    coverPath: "romantic song images/genius.jpeg",
-    duration: "03:20",
-  },
-  {
-    songNameOfSongs: "Enni Soni",
-    filePath: "romantic songs/enni soni.mp3",
-    coverPath: "romantic song images/enni soni.jpeg",
-    duration: "03:20",
-  },
-  {
-    songNameOfSongs: "Heeriye",
-    filePath: "romantic songs/heeriye.mp3",
-    coverPath: "romantic song images/heeriye.jpeg",
-    duration: "04:19",
-  },
-  {
-    songNameOfSongs: "Kaise hua",
-    filePath: "/romantic songs/kaise hua.mp3",
-    coverPath: "romantic song images/kabir singh.jpeg",
-    duration: "03:44",
-  },
-  {
-    songNameOfSongs: "Maan Meri Jaan",
-    filePath: "romantic songs/maan meri jaan.mp3",
-    coverPath: "romantic song images/maan meri jaan.jpeg",
-    duration: "03:00",
-  },
-  {
-    songNameOfSongs: "Musafir",
-    filePath: "romantic songs/musafir.mp3",
-    coverPath: "romantic song images/musafir.jpeg",
-    duration: "03:30",
-  },
-  {
-    songNameOfSongs: "Saudebaazi",
-    filePath: "romantic songs/saudebaazi.mp3",
-    coverPath: "romantic song images/saudebaazi.jpeg",
-    duration: "04:30",
-  },
-  {
-    songNameOfSongs: "Samjhawan",
-    filePath: "romantic songs/samjhaawaan.mp3",
-    coverPath: "romantic song images/samjhawaan.jpeg",
-    duration: "04:00",
-  },
-  {
-    songNameOfSongs: "Satranga",
-    filePath: "romantic songs/satranga.mp3",
-    coverPath: "romantic song images/satranga.jpeg",
-    duration: "04:30",
-  },
-  {
-    songNameOfSongs: "Soulmate",
-    filePath: "romantic songs/soulmate.mp3",
-    coverPath: "romantic song images/soulmate.jpeg",
-    duration: "03:00",
-  },
-  {
-    songNameOfSongs: "Tera Fitoor",
-    filePath: "romantic songs/tera fitoor.mp3",
-    coverPath: "romantic song images/genius.jpeg",
-    duration: "04:00",
-  },
-  {
-    songNameOfSongs: "Tujhe Kitna Chahne Lage",
-    filePath: "romantic songs/tujhe kitna chahne.mp3",
-    coverPath: "romantic song images/kabir singh.jpeg",
-    duration: "04:50",
-  },
-  {
-    songNameOfSongs: "Ve Haaniya",
-    filePath: "romantic songs/ve haaniya.mp3",
-    coverPath: "romantic song images/ve haaniya.jpeg",
-    duration: "03:30",
-  },
-  {
-    songNameOfSongs: "Raanjhana Ve",
-    filePath: "romantic songs/raanjhaan ve.mp3",
-    coverPath: "romantic song images/ranhaana ve.jpeg",
-    duration: "04:00",
-  },
-  {
-    songNameOfSongs: "Pal Pal Dil Ke Paas",
-    filePath: "romantic songs/pal pal dil ke paas.mp3",
-    coverPath: "romantic song images/dil ke paas.jpeg",
-    duration: "04:50",
-  },
-  {
-    songNameOfSongs: "Photo",
-    filePath: "romantic songs/photo.mp3",
-    coverPath: "romantic song images/lukka chuppi.jpeg",
-    duration: "04:00",
-  },
-  {
-    songNameOfSongs: "Roke Na Roke",
-    filePath: "romantic songs/roke na roke.mp3",
-    coverPath: "romantic song images/roke na roke.jpeg",
-    duration: "03:30",
-  },
-];
-let mindRefreshingSongs = [];
-let partySongs = [];
-let bhojpuriSongs = [];
-let punjabiSOngs = [];
-let folkSongs = [];
+import {
+  allSongsAdded,
+  allSongs,
+  oldSongs,
+  romanticSongs,
+  mindRefreshingSongs,
+  partySongs,
+  bhojpuriSongs,
+  punjabiSOngs,
+  folkSongs,
+  atifAslam,
+  rahatKhan,
+  arijitSingh,
+  jubinNautiyal,
+  darshanRaval,
+  uditNarayan,
+} from "./Songs-storeSong";
+const allUniqueSongAdded = [...new Set(allSongsAdded)];
+
+export const sortedAllSongs = () => {
+  return allUniqueSongAdded.sort((a, b) => {
+    return a.songNameOfSongs
+      .toLowerCase()
+      .localeCompare(b.songNameOfSongs.toLowerCase());
+  });
+};
+const playlistMap = {
+  atifAslam: atifAslam,
+  rahatKhan: rahatKhan,
+  arijitSingh: arijitSingh,
+  jubinNautiyal: jubinNautiyal,
+  darshanRaval: darshanRaval,
+  uditNarayan: uditNarayan,
+};
 
 const initialState = {
   isPlaying: false,
-  currentSong: allSongs[0],
+  currentSong: null,
   songs: allSongs,
   pausedTime: 0,
+  songsArrayName: oldSongs,
+  history: [], // Map for storing song history with O(1) lookups
 };
 const songsReducer = (state, action) => {
   let newState = state;
+
   // let playlistSong = oldSongs;
+  const updateCurrentSong = (song) => {
+    // Update history here if necessary
+    // e.g., addSongToHistory(song);
+    // console.log("update current song function called", song);
+
+    newState.currentSong = song;
+    newState.isPlaying = true; // Set isPlaying to true when a new song is played
+    // // Create a copy of the history map
+    // const updatedHistory = new Map(state.history);
+
+    // // If song already exists in history, remove it
+    // if (updatedHistory.has(song.songNameOfSongs)) {
+    //   updatedHistory.delete(song.songNameOfSongs);
+    // }
+
+    // // Add the new song to the top of the history
+    // updatedHistory.set(song.songNameOfSongs, song);
+
+    // // Track unsaved changes
+    // const updatedUnsavedHistory = new Map(state.unsavedHistory);
+    // updatedUnsavedHistory.set(song.songNameOfSongs, song);
+    // (newState.history = updatedHistory), // Replace with updated history
+    //   (newState.unsavedHistory = updatedUnsavedHistory);
+    // const updatedHistory = new Map(state.history);
+    // if (updatedHistory.has(song.songNameOfSongs)) {
+    //   updatedHistory.delete(song.songNameOfSongs);
+    // }
+    // updatedHistory.set(song.songNameOfSongs, song);
+    // newState.history = updatedHistory;
+
+    // Use filter to create a new array excluding the song to be deleted
+    let updatedSongs = [];
+    if (state.history) {
+      updatedSongs = state.history.filter(
+        (Song) => Song.songNameOfSongs !== song.songNameOfSongs
+      );
+    }
+    updatedSongs.unshift(song);
+
+    newState.history = updatedSongs;
+    localStorage.removeItem("history");
+    localStorage.setItem("history", JSON.stringify(newState.history));
+    // console.log("updarted history is ", newState.history);
+  };
+
+  if (action.type === "STOP") {
+    newState = {
+      ...state,
+      isPlaying: false,
+    };
+  }
+  if (action.type === "SAVE_HISTORY") {
+    localStorage.setItem("history", state.history);
+  }
+  if (action.type === "SET_HISTORY") {
+    const historyArray = action.payload.history;
+    // if (!historyArray) historyArray = [];
+
+    newState = {
+      ...state,
+      history: historyArray,
+    };
+  }
   if (action.type === "SET_PLAYLIST") {
     if (action.payload.playlist === "oldSongs") {
-      newState = { ...state, songs: oldSongs, currentSong: oldSongs[0] };
+      newState = {
+        ...state,
+        songs: oldSongs,
+        currentSong: null,
+        songsArrayName: "oldSongs",
+      };
     } else if (action.payload.playlist === "all-Songs") {
-      newState = { ...state, songs: allSongs, currentSong: oldSongs[0] };
+      newState = {
+        ...state,
+        songs: allSongs,
+        currentSong: null,
+        songsArrayName: "allSongs",
+      };
     } else if (action.payload.playlist === "romantic-Songs") {
-      newState = { ...state, songs: romanticSongs, currentSong: oldSongs[0] };
+      newState = {
+        ...state,
+        songs: romanticSongs,
+        currentSong: null,
+        songsArrayName: "romanticSongs",
+      };
+    } else if (playlistMap[action.payload.playlist]) {
+      newState = {
+        ...state,
+        songs: playlistMap[action.payload.playlist], // dynamically pick songs based on playlist
+        currentSong: null,
+        songsArrayName: "romanticSongs", // or any other logic specific to songsArrayName
+      };
+    }
+    // else if (action.payload.playlist === "atifAslam") {
+    //   newState = {
+    //     ...state,
+    //     songs: atifAslam,
+    //     currentSong: null,
+    //     songsArrayName: "romanticSongs",
+    //   };
+    // }
+    // else if (action.payload.playlist === "uditNarayan") {
+    //   newState = {
+    //     ...state,
+    //     songs: uditNarayan,
+    //     currentSong: null,
+    //     songsArrayName: "romanticSongs",
+    //   };
+    // }
+    else {
+      newState = {
+        ...state,
+        songs: action.payload.playlist,
+        currentSong: null,
+        songsArrayName: "userPlaylist",
+      };
     }
 
     // playlistSong = action.payload.playlist;
@@ -295,61 +172,165 @@ const songsReducer = (state, action) => {
     // };
   }
   if (action.type === "PLAY_AUDIO") {
-    newState = { ...state, isPlaying: true };
+    if (!state.currentSong) updateCurrentSong(state.songs[0]);
+    newState = {
+      ...state,
+      isPlaying: true,
+    };
+
+    // else updateCurrentSong(state.currentSong);
   } else if (action.type === "PLAY_SONG") {
-    newState = { ...state, currentSong: action.payload.song, isPlaying: true };
+    updateCurrentSong(action.payload.song);
   } else if (action.type === "PAUSE_MUSIC") {
     newState = {
       ...state,
       isPlaying: false,
-      pausedTime: action.payload.actionpausedTime || 0,
+      pausedTime: action?.payload?.actionpausedTime || 0,
     };
   } else if (action.type === "PLAY_NEXT") {
     const index = state.songs.indexOf(state.currentSong);
+    let nextSong = "";
+
     if (index === state.songs.length - 1) {
-      newState = {
-        ...state,
-        currentSong: state.songs[0],
-        isPlaying: true,
-        pausedTime: 0,
-      };
+      nextSong = state.songs[0];
     } else {
-      newState = {
-        ...state,
-        currentSong: state.songs[index + 1],
-        isPlaying: true,
-        pausedTime: 0,
-      };
+      nextSong = state.songs[index + 1];
     }
+    newState = {
+      ...state,
+      pausedTime: 0,
+    };
+    updateCurrentSong(nextSong);
   } else if (action.type === "PLAY_BACK") {
     const index = state.songs.indexOf(state.currentSong);
+    let prevSong = "";
     if (index === 0) {
-      newState = {
-        ...state,
-        currentSong: state.songs[state.songs.length - 1],
-        isPlaying: true,
-        pausedTime: 0,
-      };
+      prevSong = state.songs[state.songs.length - 1];
     } else {
-      newState = {
-        ...state,
-        currentSong: state.songs[index - 1],
-        isPlaying: true,
-        pausedTime: 0,
-      };
+      prevSong = state.songs[index - 1];
     }
+    newState = {
+      ...state,
+      pausedTime: 0,
+    };
+    updateCurrentSong(prevSong);
   }
   return newState;
 };
+export const fetchHistory = async () => {
+  try {
+    const accessToken = localStorage.getItem("accessToken");
+    try {
+      const response = await fetch(
+        "http://localhost:8000/api/v1/user/getHistory",
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${accessToken}`,
+          },
+        }
+      );
+      const result = await response.json();
+
+      console.log("history received as ", result);
+      return result.data.songs;
+    } catch (error) {
+      console.log("error while sending fetch request to get history", error);
+    }
+
+    // Store fetched history in state
+  } catch (error) {
+    console.error("Error fetching history:", error);
+  }
+};
+
 export const songscontext = createContext();
 
 const SongsProvider = ({ children }) => {
   const audioElement = useRef(new Audio());
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
+  const [showOptions, setShowOptions] = useState(false);
+  const [showSidebar, setShowSidebar] = useState(false);
+  const [playlists, setPlaylists] = useState([]);
+
+  const [selectedSongIndex, setSelectedSongIndex] = useState(null);
 
   const [state, dispatch] = useReducer(songsReducer, initialState);
 
+  const handleAddSongToPlaylist = (playlistId) => {
+    // console.log("handle add song to playlist called");
+    const accessToken = localStorage.getItem("accessToken");
+    // console.log("access token got");
+    const songIndex = selectedSongIndex;
+    // if (songIndex === null) return; // Ensure a song is selected
+    // console.log(songIndex);
+
+    const selectedSong = state.songs[songIndex]; // Access the song using the stored index
+    // console.log("sending song to get added on playlist");
+
+    // Perform the necessary logic to add the song to the playlist
+    fetch(`http://localhost:8000/api/v1/playlist/add/${playlistId}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${accessToken}`,
+      },
+      body: JSON.stringify({
+        song: state.songs[songIndex],
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Song added to playlist:", data);
+      })
+      .catch((error) => {
+        console.error("Error adding song to playlist:", error);
+      });
+    setShowOptions(false);
+    setShowSidebar(false);
+  };
+  const saveHistoryToBackend = () => {
+    const history = localStorage.getItem("history");
+
+    if (!history) return;
+
+    console.log(history, "history is ready to be saved on backend");
+
+    const setHistory = async () => {
+      try {
+        const accessToken = localStorage.getItem("accessToken");
+
+        try {
+          const response = await fetch(
+            "http://localhost:8000/api/v1/user/setHistory",
+            {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${accessToken}`,
+              },
+              body: history,
+            }
+          );
+          const result = await response.json();
+          if (response.ok) {
+            localStorage.removeItem("history");
+          }
+          // console.log(result, "set history response received as");
+          return result.data;
+        } catch (error) {
+          console.log("error while sending request to set set history", error);
+        }
+
+        // Store fetched history in state
+      } catch (error) {
+        console.error("Error fetching history:", error);
+      }
+    };
+    setHistory();
+  };
   return (
     <songscontext.Provider
       value={{
@@ -360,6 +341,17 @@ const SongsProvider = ({ children }) => {
         setCurrentTime,
         duration,
         setDuration,
+        showOptions,
+        setShowOptions,
+        showSidebar,
+        setShowSidebar,
+
+        selectedSongIndex,
+        setSelectedSongIndex,
+        handleAddSongToPlaylist,
+        playlists,
+        setPlaylists,
+        saveHistoryToBackend,
       }}
     >
       {children}

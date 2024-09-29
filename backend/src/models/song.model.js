@@ -2,11 +2,15 @@ import mongoose, { Schema } from "mongoose";
 import mongooseAggregatePaginate from "mongoose-aggregate-paginate-v2";
 const songSchema = new Schema(
   {
-    songDetail: {
+    songNameOfSongs: {
       type: String,
       require: true,
     },
-    description: {
+    filePath: {
+      type: String,
+      require: true,
+    },
+    coverPath: {
       type: String,
       require: true,
     },
@@ -17,10 +21,6 @@ const songSchema = new Schema(
     views: {
       type: Number,
       require: true,
-    },
-    owner: {
-      type: Schema.Types.ObjectId,
-      ref: "User",
     },
   },
   { timestamps: true }

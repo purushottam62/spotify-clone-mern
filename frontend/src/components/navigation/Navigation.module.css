@@ -1,0 +1,528 @@
+/* navigation.module.css */
+
+.navbarContainer {
+  padding: 15px 20px;
+  background-color: #1e1e1e; /* Dark background for the navbar */
+  background: linear-gradient(135deg, #121212, #1a1a1a);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Shadow for depth */
+}
+
+.navbarBrand {
+  font-size: 28px; /* Increase font size for brand */
+  color: #1db954; /* Spotify green */
+  display: flex;
+  align-items: center;
+}
+
+.navbarBrand:hover {
+  color: #1ed760; /* Lighter green on hover */
+}
+
+.navLink {
+  color: #b3b3b3; /* Light gray for links */
+  margin: 0 15px; /* Space between links */
+  transition: color 0.2s ease;
+  text-decoration: none; /* Remove underline from links */
+  color: #fff; /* Change the text color as needed */
+  transition: color 0.2s;
+}
+
+.navLink:hover {
+  color: #1db954; /* Change color on hover */
+}
+
+.dropdownMenu {
+  background-color: #2c2c2c; /* Darker dropdown background */
+  border-radius: 8px; /* Rounded corners */
+}
+
+.dropdownItem {
+  color: #b3b3b3; /* Light gray for dropdown items */
+}
+
+.dropdownItem:hover {
+  background-color: #1db954; /* Highlight on hover */
+  color: #fff; /* White text on hover */
+}
+
+.searchInput {
+  border-radius: 20px; /* Rounded input */
+}
+
+.searchButton {
+  border-radius: 20px; /* Rounded button */
+  background-color: #1db954; /* Spotify green */
+  color: #fff; /* White text */
+  transition: background-color 0.2s ease;
+}
+
+.searchButton:hover {
+  background-color: #1ed760; /* Lighter green on hover */
+}
+
+@media (max-width: 768px) {
+  .navbarContainer {
+    padding: 10px; /* Adjust padding for mobile */
+  }
+
+  .navLink {
+    margin: 0 10px; /* Less margin for mobile */
+  }
+}
+/* Default Navbar Style */
+.navbarContainer {
+  background-color: #333; /* Default color */
+}
+
+/* Login Navbar Style */
+.loginNavbarContainer {
+  background: linear-gradient(
+    to right,
+    #ff7e5f,
+    #feb47b
+  ); /* Vibrant gradient */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Optional shadow */
+}
+
+.navbar .nav-link {
+  color: white; /* Change text color */
+}
+
+.navbar .nav-link:hover {
+  color: #ffeb3b; /* Change hover color */
+}
+/* navigation.module.css */
+
+.navbarContainer {
+  background: linear-gradient(
+    135deg,
+    #ff7f50,
+    #ff4500
+  ); /* Main Navbar Background */
+  padding: 10px 20px;
+}
+
+.loginNavbarContainer {
+  background: linear-gradient(
+    135deg,
+    #4a90e2,
+    #9013fe
+  ); /* Login Navbar Background */
+  padding: 10px 20px;
+}
+
+.navbarBrand {
+  font-size: 24px;
+  color: white; /* Change this color as per your design */
+}
+
+.navLink {
+  color: white;
+  margin: 0 15px;
+  text-decoration: none;
+}
+
+.navLink:hover {
+  color: #ffe600; /* Change hover color */
+}
+
+.dropdown-menu {
+  background-color: #ffcc80; /* Vibrant background for dropdown */
+  border-radius: 10px; /* Rounded corners for dropdown */
+  padding: 10px; /* Padding inside the dropdown */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+}
+
+.dropdown-item {
+  color: #333; /* Text color for dropdown items */
+  padding: 10px; /* Padding for dropdown items */
+  border-radius: 5px; /* Rounded corners for items */
+  transition: background 0.3s; /* Smooth background transition */
+}
+
+.dropdown-item:hover {
+  background-color: #ffab40; /* Highlight color on hover */
+  color: white; /* Change text color on hover */
+}
+/* navigation.module.css */
+.navbarContainer {
+  background-color: #282c34; /* Dark background */
+}
+
+.navbarBrand {
+  color: #1db954; /* Spotify green */
+  font-size: 24px;
+}
+
+.navLink {
+  color: white; /* White text */
+  margin: 0 10px;
+}
+
+.dropdown-menu {
+  background-color: #1db954; /* Bright green for the dropdown */
+  border: none; /* Remove border */
+  transition: background-color 0.3s; /* Smooth transition */
+}
+
+.dropdown-item {
+  color: black; /* Dropdown item text color */
+}
+
+.dropdown-item:hover {
+  background-color: #1ed760; /* Lighter green on hover */
+}
+
+.searchInput {
+  border-radius: 20px; /* Rounded corners for the search input */
+}
+
+.searchButton {
+  background-color: #1db954; /* Match the button to Spotify color */
+  border: none;
+  border-radius: 20px; /* Rounded corners */
+}
+
+.searchButton:hover {
+  background-color: #1ed760; /* Lighter green on hover */
+}
+/* navigation.module.css */
+.navbarContainer {
+  background-color: #282c34; /* Dark background */
+  padding: 0.5rem 1rem; /* Reduce padding */
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.navbarBrand {
+  color: #1db954; /* Spotify green */
+  font-size: 20px; /* Slightly smaller font size */
+  margin-right: 15px; /* Add margin */
+}
+
+.toggler {
+  display: none; /* Initially hide the toggler */
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.togglerIcon {
+  display: block;
+  width: 30px;
+  height: 3px;
+  background: white;
+  margin: 5px 0;
+}
+
+.navbarCollapse {
+  display: flex;
+  flex-direction: row;
+}
+
+.navList {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+.navItem {
+  margin: 0 5px; /* Reduce margin */
+}
+
+.navLink {
+  color: white; /* White text */
+  font-size: 14px; /* Smaller font size */
+  text-decoration: none;
+  padding: 5px 10px;
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropdownMenu {
+  display: none; /* Hide dropdown by default */
+  position: absolute;
+  background-color: #1db954; /* Bright green for the dropdown */
+  border: none; /* Remove border */
+  z-index: 1;
+}
+
+.dropdownMenu.show {
+  display: block; /* Show dropdown when toggled */
+}
+
+.dropdownItem {
+  color: black; /* Dropdown item text color */
+  font-size: 14px; /* Smaller dropdown item font size */
+  text-decoration: none;
+  padding: 5px 10px;
+}
+
+.dropdownDivider {
+  margin: 5px 0;
+}
+
+.searchForm {
+  display: flex;
+}
+
+.searchInput {
+  border-radius: 20px; /* Rounded corners for the search input */
+  font-size: 14px; /* Smaller font size */
+}
+
+.searchButton {
+  background-color: #1db954; /* Match the button to Spotify color */
+  border: none;
+  border-radius: 20px; /* Rounded corners */
+  padding: 5px 10px;
+}
+
+.searchButton:hover {
+  background-color: #1ed760; /* Lighter green on hover */
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .navbarCollapse {
+    display: none; /* Hide navbar content initially */
+    flex-direction: column; /* Stack items vertically */
+    width: 100%; /* Full width */
+  }
+
+  .navbarCollapse.show {
+    display: flex; /* Show when toggled */
+  }
+
+  .navList {
+    flex-direction: column; /* Stack nav items vertically */
+    width: 100%; /* Full width */
+  }
+
+  .navItem {
+    width: 100%; /* Full width for nav items */
+  }
+
+  .toggler {
+    display: block; /* Show toggler on small screens */
+  }
+}
+/* navigation.module.css */
+.navbarContainer {
+  background-color: #282c34; /* Dark background */
+  padding: 0.5rem 1rem; /* Padding */
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.navbarBrand {
+  color: #1db954; /* Spotify green */
+  font-size: 24px; /* Font size for desktop */
+  margin-right: 15px; /* Add margin */
+}
+
+.toggler {
+  display: none; /* Hide toggler on large screens */
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.togglerIcon {
+  display: block;
+  width: 30px;
+  height: 3px;
+  background: white;
+  margin: 5px 0;
+}
+
+.navbarCollapse {
+  display: flex;
+  flex-direction: row; /* Horizontal layout on large screens */
+}
+
+.navList {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+.navItem {
+  margin: 0 10px; /* Adjusted margin */
+}
+
+.navLink {
+  color: white; /* White text */
+  font-size: 16px; /* Normal font size */
+  text-decoration: none;
+  padding: 5px 10px;
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropdownMenu {
+  display: none; /* Hide dropdown by default */
+  position: absolute;
+  background-color: #1db954; /* Bright green for dropdown */
+  border: none; /* Remove border */
+  z-index: 1;
+}
+
+.dropdownMenu.show {
+  display: block; /* Show dropdown when toggled */
+}
+
+.dropdownItem {
+  color: black; /* Dropdown item text color */
+  font-size: 14px; /* Font size for dropdown items */
+  text-decoration: none;
+  padding: 5px 10px;
+}
+
+.dropdownDivider {
+  margin: 5px 0;
+}
+
+.searchForm {
+  display: flex;
+}
+
+.searchInput {
+  border-radius: 20px; /* Rounded corners for search input */
+  font-size: 14px; /* Font size for search input */
+}
+
+.searchButton {
+  background-color: #1db954; /* Match the button to Spotify color */
+  border: none;
+  border-radius: 20px; /* Rounded corners */
+  padding: 5px 10px;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .navbarCollapse {
+    display: none; /* Hide navbar content initially */
+    flex-direction: column;
+  }
+}
+/* navigation.module.css */
+.navbarContainer {
+  background-color: #282c34; /* Dark background */
+  padding: 0.5rem 1rem; /* Padding */
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.navbarBrand {
+  color: #1db954; /* Spotify green */
+  font-size: 24px; /* Font size for desktop */
+  margin-right: 15px; /* Add margin */
+}
+
+.toggler {
+  display: none; /* Hide toggler on large screens */
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.togglerIcon {
+  display: block;
+  width: 30px;
+  height: 3px;
+  background: white;
+  margin: 5px 0;
+}
+
+.navbarCollapse {
+  display: flex;
+  flex-direction: row; /* Horizontal layout on large screens */
+}
+
+.navList {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+.navItem {
+  margin: 0 15px; /* Increased margin for better spacing */
+}
+
+.navLink {
+  color: white; /* White text */
+  font-size: 16px; /* Normal font size */
+  text-decoration: none;
+  padding: 10px; /* Added padding for clickable area */
+  transition: background-color 0.3s; /* Smooth background transition */
+}
+
+.navLink:hover {
+  background-color: rgba(255, 255, 255, 0.1); /* Highlight effect on hover */
+}
+
+.dropdownMenu {
+  position: absolute; /* Dropdown should overlay other elements */
+  background-color: #333; /* Dark background for dropdown */
+  border-radius: 5px; /* Rounded corners */
+  padding: 0.5rem; /* Padding inside dropdown */
+  z-index: 1000; /* Ensure dropdown is on top */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow for depth */
+}
+
+.dropdownItem {
+  color: white; /* White text for dropdown items */
+  text-decoration: none; /* No underline */
+  display: block; /* Each item is a block */
+  padding: 10px 15px; /* Padding for dropdown items */
+  margin: 5px 0; /* Margin between items */
+  transition: background-color 0.3s; /* Smooth background transition */
+}
+
+.dropdownItem:hover {
+  background-color: rgba(255, 255, 255, 0.1); /* Highlight on hover */
+}
+
+.dropdown-divider {
+  height: 1px; /* Divider height */
+  background-color: rgba(255, 255, 255, 0.2); /* Divider color */
+  margin: 5px 0; /* Margin around divider */
+}

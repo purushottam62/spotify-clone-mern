@@ -1,0 +1,140 @@
+.container {
+  font-family: "Poppins", sans-serif;
+  color: #ffffff;
+  background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+  padding: 40px;
+  text-align: center;
+}
+
+.heroSection {
+  margin-bottom: 50px;
+}
+
+.title {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  color: #f9f9f9;
+  letter-spacing: 1.2px;
+}
+
+.subtitle {
+  font-size: 1.5rem;
+  font-weight: 300;
+  color: #e1e1e1;
+}
+
+.features {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.featureBox {
+  background-color: rgba(255, 255, 255, 0.15);
+  border-radius: 10px;
+  padding: 20px;
+  margin: 10px;
+  width: 250px;
+  text-align: center;
+  transition: transform 0.3s;
+}
+
+.featureBox:hover {
+  transform: scale(1.05);
+}
+
+.icon {
+  width: 60px;
+  margin-bottom: 15px;
+}
+
+.featureBox h3 {
+  font-size: 1.5rem;
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+.featureBox p {
+  font-size: 1rem;
+  color: #ddd;
+}
+
+.quoteSection {
+  margin: 50px 0;
+  font-size: 1.3rem;
+  font-style: italic;
+  color: #eee;
+}
+
+.quoteSection blockquote {
+  border-left: 4px solid #f9f9f9;
+  padding-left: 15px;
+}
+
+.quoteSection span {
+  font-weight: bold;
+  color: #f3c623;
+}
+
+.teamSection {
+  margin: 50px 0;
+}
+
+.teamSection h2 {
+  font-size: 2rem;
+  color: #f9f9f9;
+  margin-bottom: 30px;
+}
+
+.team {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.teamMember {
+  margin: 20px;
+  text-align: center;
+}
+
+.teamMember img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  margin-bottom: 15px;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.teamMember h4 {
+  font-size: 1.5rem;
+  color: #f9f9f9;
+}
+
+.teamMember p {
+  color: #ddd;
+}
+
+.contactSection {
+  margin-top: 50px;
+}
+
+.contactSection h2 {
+  font-size: 2rem;
+  color: #f9f9f9;
+  margin-bottom: 20px;
+}
+
+.contactSection p {
+  color: #eee;
+}
+
+.contactSection a {
+  color: #f3c623;
+  text-decoration: none;
+}
+
+.contactSection a:hover {
+  text-decoration: underline;
+}
