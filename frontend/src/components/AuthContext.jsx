@@ -34,14 +34,22 @@ const AuthContext = ({ children }) => {
         }
       );
       console.log(response);
+
+      if (response.ok) {
+        localStorage.setItem("accessToken", response.cookie.accessToken);
+        localStorage.removeItem("refreshToken");
+        localStorage.setItem("refreshToken", response.cookie.refreshToken);
+        setIsAuthenticated(true);
+      }
     }
   };
 
   useEffect(() => {
-    setIsAuthenticated(!!token);
+    setIsAuthenticated(!isTokenExpired);
     console.log(isAuthenticated);
+    const refreshToken = localStorage.getItem("refreshToken");
 
-    if (isTokenExpired()) {
+    if (isTokenExpired() && refreshToken) {
       refreshAcessToken();
     }
   }, []);

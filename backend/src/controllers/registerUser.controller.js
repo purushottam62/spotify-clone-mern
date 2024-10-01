@@ -22,6 +22,7 @@ const generateAcessTokenAndRefreshToken = async (userid) => {
 };
 
 const registerUser = asyncHandler(async (req, res) => {
+  console.log("register user called");
   const { username, fullName, email, password } = req.body;
 
   // get user details from frontend
@@ -93,11 +94,21 @@ const registerUser = asyncHandler(async (req, res) => {
   if (!createdUser) {
     throw new ApiError(500, "something went wrong while registering user");
   }
-
-  return res.status(201).json(
-    new ApiResponse(200, createdUser, "user registered successfully")
-    // email: this.email,
+  const { accessToken, refreshToken } = await generateAcessTokenAndRefreshToken(
+    user._id
   );
+  const options = {
+    httpOnly: true,
+    secure: true,
+  };
+  return res
+    .status(201)
+    .cookie("accessToken", accessToken, options)
+    .cookie("RefreshToken", refreshToken, options)
+    .json(
+      new ApiResponse(200, createdUser, "user registered successfully")
+      // email: this.email,
+    );
 });
 const loginUser = asyncHandler(async (req, res) => {
   //take username and password
@@ -166,13 +177,14 @@ const logOutUser = asyncHandler(async (req, res) => {
 });
 
 const refreshAccessToken = asyncHandler(async (req, res) => {
+  console.log("refresh access token called");
   const incomingRefreshToken =
     req.cookies.refreshToken || req.body.refreshToken;
   if (!incomingRefreshToken) {
     throw new ApiError(401, "unauthorised request");
   }
   try {
-    const decodedToken = await jwt.verify(
+    const decodedToken = await Jwt.verify(
       incomingRefreshToken,
       process.env.REFRESH_TOKEN_SECRET
     );

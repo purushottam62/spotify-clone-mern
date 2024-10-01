@@ -220,6 +220,7 @@ const songsReducer = (state, action) => {
 export const fetchHistory = async () => {
   try {
     const accessToken = localStorage.getItem("accessToken");
+    if (!accessToken) return [];
     try {
       const response = await fetch(
         "http://localhost:8000/api/v1/user/getHistory",

@@ -13,6 +13,7 @@ const CreatePlaylist = () => {
     e.preventDefault();
     setDisable(true);
     const accessToken = localStorage.getItem("accessToken");
+    if (!accessToken) return;
 
     const playListData = {
       name: createPlaylist.current.value,

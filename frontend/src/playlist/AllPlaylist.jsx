@@ -31,6 +31,7 @@ let requiredPlaylists = [];
 export const fetchData = async () => {
   try {
     const accessToken = localStorage.getItem("accessToken");
+    if (!accessToken) return;
     if (!accessToken) {
       console.log(
         "you are not authenticated to see your playlist you need to be logged in to see your playlist please login "

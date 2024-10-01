@@ -1,10 +1,12 @@
-import React, { useRef, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Navigation from "../../navigation/Navigation";
 import styles from "./Register.module.css"; // Import your CSS module
+import { authcontext } from "../../AuthContext";
 
 const Register = () => {
   const [isButtonDisabled, setIsButtonDisabled] = useState(false);
+  const { setIsAuthenticated } = useContext(authcontext);
   const fullName = useRef("");
   const password = useRef("");
   const email = useRef("");
@@ -34,6 +36,14 @@ const Register = () => {
       );
       const data = await response.json();
       console.log(data);
+      if (response.ok) {
+        console.log("everything is fine ", data);
+
+        // localStorage.setItem("accessToken", response.cookie.accessToken);
+        // localStorage.removeItem("refreshToken");
+        // localStorage.setItem("refreshToken", response.cookie.refreshToken);
+        setIsAuthenticated(true);
+      }
     } catch (error) {
       console.log("Failed to register user from frontend", error);
     }

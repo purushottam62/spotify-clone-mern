@@ -26,6 +26,98 @@ cloudinary.config({
 //   return null;
 // }
 // };
+// const uploadOnCloudinary = async (localFilePath) => {
+//   try {
+//     if (!localFilePath) {
+//       console.error("No local file path provided for upload.");
+//       return null;
+//     }
+
+//     console.log("Attempting to upload file to Cloudinary:", localFilePath);
+//     //converting heic to jpeg
+//     if (path.extname(localFilePath).toLowerCase() === ".heic") {
+//       const newFilePath = localFilePath.replace(/\.heic$/i, ".jpg");
+//       try {
+//         const inputBuffer = fs.readFileSync(localFilePath);
+//         const outputBuffer = await heicConvert({
+//           buffer: inputBuffer,
+//           format: "JPEG",
+//         });
+//         fs.writeFileSync(newFilePath, outputBuffer);
+//         console.log("New file is created at ", newFilePath);
+//         if (newFilePath) {
+//           if (fs.existsSync(localFilePath)) {
+//             fs.unlink(localFilePath, (err) => {
+//               if (err) {
+//                 console.error("Error deleting the local file:", err);
+//               } else {
+//                 console.log("Local file deleted successfully");
+//               }
+//             });
+//           }
+//         }
+//         localFilePath = newFilePath;
+//       } catch (error) {
+//         console.log("Error while converting file to different format", error);
+//         return null;
+//       }
+//     } else if (
+//       path.extname(localFilePath).toLowerCase() != ".jpeg" ||
+//       path.extname(localFilePath).toLowerCase() != ".jpg"
+//     ) {
+//       const newFilePath = localFilePath.replace(/\.heic$/i, ".jpg");
+//       try {
+//         await sharp(localFilePath).toFormat("jpeg").toFile(newFilePath);
+//         console.log("new file is created at ", newFilePath);
+//         if (newFilePath) {
+//           if (fs.existsSync(localFilePath)) {
+//             fs.unlink(localFilePath, (err) => {
+//               if (err) {
+//                 console.error("Error deleting the local file:", err);
+//               } else {
+//                 console.log("Local file deleted successfully");
+//               }
+//             });
+//           }
+//         }
+//         localFilePath = newFilePath;
+//       } catch (error) {
+//         console.log("error while converting file to different format", error);
+//         return null;
+//       }
+//     }
+
+//     const response = await cloudinary.uploader.upload(localFilePath, {
+//       resource_type: "auto",
+//     });
+
+//     console.log("File uploaded to Cloudinary successfully:", response.url);
+
+//     // Asynchronously delete the file after uploading
+//     if (fs.existsSync(localFilePath)) {
+//       fs.unlink(localFilePath, (err) => {
+//         if (err) {
+//           console.error("Error deleting the local file:", err);
+//         } else {
+//           console.log("Local file deleted successfully");
+//         }
+//       });
+//     }
+//     return response.url;
+//   } catch (error) {
+//     console.error("Error occurred while uploading file to Cloudinary:", error);
+
+//     // Ensure that the file is deleted if an error occurs
+//     if (fs.existsSync(localFilePath)) {
+//       fs.unlink(localFilePath, (err) => {
+//         if (err) {
+//           console.error("Error deleting the local file on failure:", err);
+//         }
+//       });
+//     }
+//     return null;
+//   }
+// // };
 const uploadOnCloudinary = async (localFilePath) => {
   try {
     if (!localFilePath) {
@@ -34,83 +126,50 @@ const uploadOnCloudinary = async (localFilePath) => {
     }
 
     console.log("Attempting to upload file to Cloudinary:", localFilePath);
-    //converting heic to jpeg
+
+    // Converting HEIC to JPEG
     if (path.extname(localFilePath).toLowerCase() === ".heic") {
       const newFilePath = localFilePath.replace(/\.heic$/i, ".jpg");
-      try {
-        const inputBuffer = fs.readFileSync(localFilePath);
-        const outputBuffer = await heicConvert({
-          buffer: inputBuffer,
-          format: "JPEG",
-        });
-        fs.writeFileSync(newFilePath, outputBuffer);
-        console.log("New file is created at ", newFilePath);
-        if (newFilePath) {
-          if (fs.existsSync(localFilePath)) {
-            fs.unlink(localFilePath, (err) => {
-              if (err) {
-                console.error("Error deleting the local file:", err);
-              } else {
-                console.log("Local file deleted successfully");
-              }
-            });
-          }
-        }
-        localFilePath = newFilePath;
-      } catch (error) {
-        console.log("Error while converting file to different format", error);
-        return null;
-      }
-    } else if (path.extname(localFilePath).toLowerCase() != ".jpeg") {
-      const newFilePath = localFilePath.replace(/\.heic$/i, ".jpg");
-      try {
-        await sharp(localFilePath).toFormat("jpeg").toFile(newFilePath);
-        console.log("new file is created at ", newFilePath);
-        if (newFilePath) {
-          if (fs.existsSync(localFilePath)) {
-            fs.unlink(localFilePath, (err) => {
-              if (err) {
-                console.error("Error deleting the local file:", err);
-              } else {
-                console.log("Local file deleted successfully");
-              }
-            });
-          }
-        }
-        localFilePath = newFilePath;
-      } catch (error) {
-        console.log("error while converting file to different format", error);
-        return null;
-      }
+      const inputBuffer = fs.readFileSync(localFilePath);
+      const outputBuffer = await heicConvert({
+        buffer: inputBuffer,
+        format: "JPEG",
+      });
+      fs.writeFileSync(newFilePath, outputBuffer);
+      console.log("New file created at ", newFilePath);
+      // Delete the old HEIC file
+      fs.unlinkSync(localFilePath);
+      localFilePath = newFilePath; // Set to new path
+    } else if (
+      path.extname(localFilePath).toLowerCase() !== ".jpeg" &&
+      path.extname(localFilePath).toLowerCase() !== ".jpg"
+    ) {
+      const newFilePath = localFilePath.replace(
+        path.extname(localFilePath),
+        ".jpg"
+      );
+      await sharp(localFilePath).toFormat("jpeg").toFile(newFilePath);
+      console.log("New file created at ", newFilePath);
+      fs.unlinkSync(localFilePath);
+      localFilePath = newFilePath;
     }
 
     const response = await cloudinary.uploader.upload(localFilePath, {
       resource_type: "auto",
     });
 
-    console.log("File uploaded to Cloudinary successfully:", response.url);
-
-    // Asynchronously delete the file after uploading
-    if (fs.existsSync(localFilePath)) {
-      fs.unlink(localFilePath, (err) => {
-        if (err) {
-          console.error("Error deleting the local file:", err);
-        } else {
-          console.log("Local file deleted successfully");
-        }
-      });
+    if (!response || !response.url) {
+      console.error("Upload failed, no URL returned.");
+      return null;
     }
+
+    console.log("File uploaded to Cloudinary successfully:", response.url);
+    fs.unlinkSync(localFilePath); // Delete the local file after uploading
     return response.url;
   } catch (error) {
     console.error("Error occurred while uploading file to Cloudinary:", error);
-
-    // Ensure that the file is deleted if an error occurs
     if (fs.existsSync(localFilePath)) {
-      fs.unlink(localFilePath, (err) => {
-        if (err) {
-          console.error("Error deleting the local file on failure:", err);
-        }
-      });
+      fs.unlinkSync(localFilePath);
     }
     return null;
   }
