@@ -21,7 +21,7 @@ const CreatePlaylist = () => {
     };
 
     try {
-      const response = await fetch("http://localhost:8000/api/v1/playlist/", {
+      const response = await fetch("/api/v1/playlist/", {
         method: "POST",
         credentials: "include",
         mode: "cors",

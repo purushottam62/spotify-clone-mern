@@ -25,14 +25,11 @@ const AuthContext = ({ children }) => {
       setIsAuthenticated(false);
       redirect("/login");
     } else {
-      const response = await fetch(
-        "http://localhost:8000/api/v1/user/refreshToken",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ refreshToken: refreshToken }),
-        }
-      );
+      const response = await fetch("/api/v1/user/refreshToken", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ refreshToken: refreshToken }),
+      });
       console.log(response);
 
       if (response.ok) {

@@ -40,19 +40,16 @@ export const fetchData = async () => {
     const decoded = jwtDecode(accessToken);
     const userId = decoded.id;
     console.log(userId);
-    const response = await fetch(
-      `http://localhost:8000/api/v1/playlist/user/${userId}`,
-      {
-        method: "GET",
-        credentials: "include",
-        mode: "cors",
+    const response = await fetch(`/api/v1/playlist/user/${userId}`, {
+      method: "GET",
+      credentials: "include",
+      mode: "cors",
 
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${accessToken}`,
-        },
-      }
-    );
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${accessToken}`,
+      },
+    });
     if (!response.ok) {
       console.log(
         "failed to receive response response is not ok",

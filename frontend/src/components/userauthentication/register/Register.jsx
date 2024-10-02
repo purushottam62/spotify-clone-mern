@@ -27,13 +27,10 @@ const Register = () => {
     }
 
     try {
-      const response = await fetch(
-        "http://localhost:8000/api/v1/user/register",
-        {
-          method: "POST",
-          body: formData,
-        }
-      );
+      const response = await fetch("/api/v1/user/register", {
+        method: "POST",
+        body: formData,
+      });
       const data = await response.json();
       console.log(data);
       if (response.ok) {

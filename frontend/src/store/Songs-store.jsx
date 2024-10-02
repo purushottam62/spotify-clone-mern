@@ -222,16 +222,13 @@ export const fetchHistory = async () => {
     const accessToken = localStorage.getItem("accessToken");
     if (!accessToken) return [];
     try {
-      const response = await fetch(
-        "http://localhost:8000/api/v1/user/getHistory",
-        {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${accessToken}`,
-          },
-        }
-      );
+      const response = await fetch("/api/v1/user/getHistory", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${accessToken}`,
+        },
+      });
       const result = await response.json();
 
       console.log("history received as ", result);
@@ -272,7 +269,7 @@ const SongsProvider = ({ children }) => {
     // console.log("sending song to get added on playlist");
 
     // Perform the necessary logic to add the song to the playlist
-    fetch(`http://localhost:8000/api/v1/playlist/add/${playlistId}`, {
+    fetch(`/api/v1/playlist/add/${playlistId}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -304,17 +301,14 @@ const SongsProvider = ({ children }) => {
         const accessToken = localStorage.getItem("accessToken");
 
         try {
-          const response = await fetch(
-            "http://localhost:8000/api/v1/user/setHistory",
-            {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-                Authorization: `Bearer ${accessToken}`,
-              },
-              body: history,
-            }
-          );
+          const response = await fetch("/api/v1/user/setHistory", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${accessToken}`,
+            },
+            body: history,
+          });
           const result = await response.json();
           if (response.ok) {
             localStorage.removeItem("history");
