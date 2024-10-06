@@ -111,6 +111,10 @@ const AppRouter = () => {
       element: <ReactWrapper playlist="all-Songs" />,
     },
     {
+      path: "/Bollywood Hits",
+      element: <ReactWrapper playlist="bollywood-songs" />,
+    },
+    {
       path: "/Romantic Song",
       element: <ReactWrapper playlist="romantic-Songs" />,
     },

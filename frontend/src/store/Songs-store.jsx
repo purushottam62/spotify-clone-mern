@@ -4,7 +4,6 @@ import {
   allSongs,
   oldSongs,
   romanticSongs,
-  mindRefreshingSongs,
   partySongs,
   bhojpuriSongs,
   punjabiSOngs,
@@ -15,6 +14,7 @@ import {
   jubinNautiyal,
   darshanRaval,
   uditNarayan,
+  bollywoodHits,
 } from "./Songs-storeSong";
 const allUniqueSongAdded = [...new Set(allSongsAdded)];
 
@@ -123,6 +123,13 @@ const songsReducer = (state, action) => {
         songs: allSongs,
         currentSong: null,
         songsArrayName: "allSongs",
+      };
+    } else if (action.payload.playlist === "bollywood-songs") {
+      newState = {
+        ...state,
+        songs: bollywoodHits,
+        currentSong: null,
+        songsArrayName: "bollywoodHits",
       };
     } else if (action.payload.playlist === "romantic-Songs") {
       newState = {

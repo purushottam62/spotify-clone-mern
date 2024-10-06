@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { FaSpotify } from "react-icons/fa";
 import { NavLink, useNavigate } from "react-router-dom";
 import { authcontext } from "../AuthContext";
-import styles from "./navigation.module.css";
+import styles from "./Navigation.module.css";
 import { sortedAllSongs } from "../../store/Songs-store";
 
 const Navigation = ({ isLogin }) => {

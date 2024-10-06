@@ -262,7 +262,7 @@ let romanticSongs = [
     duration: "03:30",
   },
 ];
-let mindRefreshingSongs = [];
+let bollywoodHits = [];
 let partySongs = [];
 let bhojpuriSongs = [];
 let punjabiSOngs = [];
@@ -522,7 +522,7 @@ const allSongsAdded = [
   ...allSongs,
   ...oldSongs,
   ...romanticSongs,
-  ...mindRefreshingSongs,
+  ...bollywoodHits,
   ...partySongs,
   ...bhojpuriSongs,
   ...punjabiSOngs,
@@ -539,7 +539,6 @@ export {
   allSongs,
   oldSongs,
   romanticSongs,
-  mindRefreshingSongs,
   partySongs,
   bhojpuriSongs,
   punjabiSOngs,
@@ -550,4 +549,5 @@ export {
   jubinNautiyal,
   darshanRaval,
   uditNarayan,
+  bollywoodHits,
 };
